@@ -8,11 +8,51 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
 }
+
 .spinner {
   border-top-color: transparent;
   animation: spin 1s linear infinite;
+}
+
+@keyframes showModal {
+  from {
+    opacity: 0;
+    transform: scale(0);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes hideModal {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  to {
+    opacity: 0;
+    transform: scale(0);
+  }
+}
+
+.bg-modal-success,
+.modal-success {
+  transition: transform .2s ease-in-out;
+}
+
+.show {
+  animation: showModal .3s ease-in-out;
+}
+
+.hide {
+  opacity: 0;
+  animation: hideModal .25s ease-in-out;
 }
