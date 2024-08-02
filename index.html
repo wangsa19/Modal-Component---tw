@@ -26,13 +26,17 @@
         onclick="openModalDelete()">
         Delete Item
       </button>
+      <button class="btn-modal-delete bg-yellow-500 hover:bg-yellow-600 px-4 py-2 rounded-md text-white"
+        onclick="openmodalFormElement()">
+        Form Element
+      </button>
     </div>
   </div>
   <!-- modal success item -->
   <div
     class="bg-modal-success h-screen w-full fixed left-0 top-0 flex justify-center items-center bg-black bg-opacity-50 hidden">
     <!-- modal -->
-    <div class="bg-white rounded-[25px] shadow-lg w-1/3 modal-success">
+    <div class="bg-white rounded-[25px] shadow-lg  w-full sm:w-2/3 md:w-2/5 lg:w-1/3 modal-success">
       <!-- modal header -->
       <div class="mt-8 flex items-center justify-center">
         <div class="rounded-full w-12 h-12 bg-green-200 text-green-600 flex items-center justify-center">
@@ -62,7 +66,7 @@
   <div
     class="bg-modal-process h-screen w-full fixed left-0 top-0 flex justify-center items-center bg-black bg-opacity-50 hidden">
     <!-- modal -->
-    <div class="bg-white rounded-[25px] shadow-lg w-1/3 modal-process py-8">
+    <div class="bg-white rounded-[25px] shadow-lg  w-full sm:w-2/3 md:w-2/5 lg:w-1/3 modal-process py-8">
       <!-- modal header -->
       <div class="flex items-center justify-center">
         <div class="rounded-full bg-transparent text-green-600 flex items-center justify-center">
@@ -81,7 +85,7 @@
   <div
     class="bg-modal-delete h-screen w-full fixed left-0 top-0 flex justify-center items-center bg-black bg-opacity-50 hidden">
     <!-- modal -->
-    <div class="bg-white rounded-[25px] shadow-lg w-1/3 modal-delete">
+    <div class="bg-white rounded-[25px] shadow-lg  w-full sm:w-2/3 md:w-2/5 lg:w-1/3 modal-delete">
       <!-- modal header -->
       <div class="mt-8 flex items-center justify-center">
         <div class="rounded-full w-12 h-12 bg-red-200 text-red-600 flex items-center justify-center">
@@ -110,6 +114,46 @@
       </div>
     </div>
   </div>
+  <!-- modal form element -->
+   <div class="bg-modal-form-element h-screen w-full fixed left-0 top-0 flex justify-center items-center bg-black bg-opacity-50 hidden">
+    <!-- modal -->
+     <div class="bg-white rounded-[25px] shadow-lg w-full sm:w-2/3 md:w-2/5 lg:w-1/3 modal-form-element">
+      <!-- modal header -->
+       <div class="flex items-center justify-start p-6 border-b border-slate-300">
+         <h2 class="font-semibold text-2xl w-full">Form Add</h2>
+         <button type="button" class="ml-auto text-gray-400 bg-transparent hover:scale-125 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center active:scale-90" onclick="closemodalFormElement()">
+          <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+          </svg>
+          <span class="sr-only">Close modal</span>
+        </button>
+       </div>
+       <!-- modal body -->
+       <div class="flex items-center px-6 py-3">
+        <form class="w-full">
+          <div class="mb-3">
+            <label class="block mb-2 text-sm font-medium text-gray-900">Name</label>
+            <input class="w-full text-sm bg-gray-50 border border-slate-300 rounded-lg p-2 outline-none focus:ring-blue-500 focus:border-blue-500" type="text" placeholder="Name">
+          </div>
+          <div class="mb-3">
+            <label class="block mb-2 text-sm font-medium text-gray-900">Username</label>
+            <input class="w-full text-sm bg-gray-50 border border-slate-300 rounded-lg p-2 outline-none focus:ring-blue-500 focus:border-blue-500" type="text" placeholder="username">
+          </div>
+          <div class="mb-3">
+            <label class="block mb-2 text-sm font-medium text-gray-900">Email</label>
+            <input class="w-full text-sm bg-gray-50 border border-slate-300 rounded-lg p-2 outline-none focus:ring-blue-500 focus:border-blue-500" type="text" placeholder="email">
+          </div>
+          <div class="mb-3">
+            <label class="block mb-2 text-sm font-medium text-gray-900">Password</label>
+            <input class="w-full text-sm bg-gray-50 border border-slate-300 rounded-lg p-2 outline-none focus:ring-blue-500 focus:border-blue-500" type="text" placeholder="password">
+          </div>
+          <button type="submit" class="w-full bg-sky-600 hover:bg-sky-700 px-4 my-3 py-[10px] rounded-full text-white">Simpan</button>
+        </form>
+       </div>
+       <!-- modal footer -->
+       <div class="flex items-center justify-center"></div>
+     </div>
+   </div>
 
   <script>
     const btnModalSuccess = document.querySelector(".btn-modal-success");
@@ -177,6 +221,29 @@
       setTimeout(() => {
         modalDelete.classList.remove("hide");
         bgModalDelete.classList.add("hidden");
+      }, 200);
+    }
+
+    const btnModalFormElement = document.querySelector(".btn-modal-form-element");
+    const bgModalFormElement = document.querySelector(".bg-modal-form-element");
+    const modalFormElement = document.querySelector(".modal-form-element");
+    bgModalFormElement.addEventListener("click", function () {
+      closemodalFormElement();
+    });
+    modalFormElement.addEventListener("click", function (event) {
+      event.stopPropagation();
+    });
+    function openmodalFormElement() {
+      modalFormElement.classList.add("show");
+      modalFormElement.classList.remove("hide");
+      bgModalFormElement.classList.remove("hidden");
+    }
+    function closemodalFormElement() {
+      modalFormElement.classList.remove("show");
+      modalFormElement.classList.add("hide");
+      setTimeout(() => {
+        modalFormElement.classList.remove("hide");
+        bgModalFormElement.classList.add("hidden");
       }, 200);
     }
   </script>
